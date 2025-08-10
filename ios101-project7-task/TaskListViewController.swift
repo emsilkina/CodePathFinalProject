@@ -173,17 +173,22 @@ extension TaskListViewController: UITableViewDataSource {
         let accomplishAction = UIContextualAction(style: .normal,
                                                   title: "Accomplish") { [weak self] (_, _, completionHandler) in
             guard let self = self else { return }
-            
-            var task = self.tasks[indexPath.row]
-            task.isComplete = true
-            task.save()
+//            
+//            var task = self.tasks[indexPath.row]
+//            task.isComplete = true
+//            task.save()
+            tasks.remove(at: indexPath.row)
+            // 3.
+            Task.save(tasks)
+            // 4.
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             
             self.refreshTasks()
             completionHandler(true) // tells the system the action succeeded
         }
 
         accomplishAction.backgroundColor = .systemGreen
-        tasks.remove(at: indexPath.row)
+                       
 
         return UISwipeActionsConfiguration(actions: [accomplishAction])
     }
