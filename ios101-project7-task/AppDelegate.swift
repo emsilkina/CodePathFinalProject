@@ -1,8 +1,5 @@
 //
 //  AppDelegate.swift
-//  PiggyBank
-//
-//  Created by Emily Silkina on 8/9/25.
 //
 
 import UIKit
